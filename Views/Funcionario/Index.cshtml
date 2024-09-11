@@ -1,0 +1,89 @@
+﻿@model IEnumerable<SistemaGHMM.Models.FuncionarioModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FotoUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuncionarioNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuncionarioCpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuncionarioEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuncionarioTelefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuncionarioDataNascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuncionarioEscolaridade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cargo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuncionarioSetor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuncionarioSenha)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FotoUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuncionarioNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuncionarioCpf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuncionarioEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuncionarioTelefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuncionarioDataNascimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuncionarioEscolaridade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cargo.CargoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuncionarioSetor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuncionarioSenha)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

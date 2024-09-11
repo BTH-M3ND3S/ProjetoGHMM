@@ -1,0 +1,75 @@
+﻿@model SistemaGHMM.Models.MaquinaModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>MaquinaModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MaquinaNome" class="control-label"></label>
+                <input asp-for="MaquinaNome" class="form-control" />
+                <span asp-validation-for="MaquinaNome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoMaquinaId" class="control-label"></label>
+                <select asp-for="TipoMaquinaId" class ="form-control" asp-items="ViewBag.TipoMaquinaId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SetorId" class="control-label"></label>
+                <select asp-for="SetorId" class ="form-control" asp-items="ViewBag.SetorId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaquinaModelo" class="control-label"></label>
+                <input asp-for="MaquinaModelo" class="form-control" />
+                <span asp-validation-for="MaquinaModelo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaquinaNumeroSerie" class="control-label"></label>
+                <input asp-for="MaquinaNumeroSerie" class="form-control" />
+                <span asp-validation-for="MaquinaNumeroSerie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FabricanteId" class="control-label"></label>
+                <select asp-for="FabricanteId" class ="form-control" asp-items="ViewBag.FabricanteId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaquinaDataAquisicao" class="control-label"></label>
+                <input asp-for="MaquinaDataAquisicao" class="form-control" />
+                <span asp-validation-for="MaquinaDataAquisicao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaquinaFotoUrl" class="control-label"></label>
+                <input asp-for="MaquinaFotoUrl" class="form-control" />
+                <span asp-validation-for="MaquinaFotoUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaquinaPeso" class="control-label"></label>
+                <input asp-for="MaquinaPeso" class="form-control" />
+                <span asp-validation-for="MaquinaPeso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaquinaVoltagem" class="control-label"></label>
+                <input asp-for="MaquinaVoltagem" class="form-control" />
+                <span asp-validation-for="MaquinaVoltagem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

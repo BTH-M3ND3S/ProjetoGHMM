@@ -1,0 +1,89 @@
+﻿@model IEnumerable<SistemaGHMM.Models.MaquinaModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaquinaNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoMaquina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Setor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaquinaModelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaquinaNumeroSerie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fabricante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaquinaDataAquisicao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaquinaFotoUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaquinaPeso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaquinaVoltagem)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaquinaNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoMaquina.TipoMaquinaNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Setor.SetorNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaquinaModelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaquinaNumeroSerie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fabricante.FabricanteNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaquinaDataAquisicao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaquinaFotoUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaquinaPeso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaquinaVoltagem)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
