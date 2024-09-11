@@ -15,9 +15,13 @@ namespace SistemaGHMM.Models
         public DbSet<SetorModel> Setor { get; set; } 
         public DbSet<TipoMaquinaModel> TipoMaquina { get; set; }
         public DbSet<MaquinaModel> Maquina { get; set; } 
-        public DbSet<SistemaGHMM.Models.RelatorioModel> RelatorioModel { get; set; } = default!;
-
-       
+        public DbSet<RelatorioModel> RelatorioModel { get; set; }
+        public DbSet<TipoManutencaoModel> TipoManutencao { get; set; }
+        public DbSet<ManutencaoModel> Manutencao { get; set; }
+        public DbSet<CategoriaPecaModel> CateogriaPeca { get; set; }
+        public DbSet<FornecedorModel> Fornecedor { get; set; }
+        public DbSet<ManutencaoEPecasModel> ManutencaoEPecas { get; set; }
+        public DbSet<PecaModel> Peca { get; set; }
 
 
 

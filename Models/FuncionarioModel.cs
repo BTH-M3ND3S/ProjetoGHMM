@@ -49,14 +49,14 @@ namespace SistemaGHMM.Models
         public string FuncionarioEscolaridade { get; set; } = string.Empty;
 
         [ForeignKey("CargoId")]
-        [Display(Name = "Cód. Cargo")]
+        [Display(Name = "Cargo")]
         public int CargoId { get; set; }
         public CargoModel? Cargo { get; set; }
 
-        [Column("FuncionarioSetor")]
+        [ForeignKey("SetorId")]
         [Display(Name = "Setor")]
         [Required]
-        public string FuncionarioSetor { get; set; } = string.Empty;
+        public SetorModel? Setor { get; set; }
 
         [Column("FuncionarioSenha")]
         [Display(Name = "Senha")]

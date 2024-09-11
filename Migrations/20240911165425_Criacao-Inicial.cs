@@ -25,6 +25,19 @@ namespace SistemaGHMM.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CategoriaPeca",
+                columns: table => new
+                {
+                    CategoriaPecaId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoriaPecaNome = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CategoriaPeca", x => x.CategoriaPecaId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Fabricante",
                 columns: table => new
                 {
@@ -38,6 +51,34 @@ namespace SistemaGHMM.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Fornecedor",
+                columns: table => new
+                {
+                    FornecedorId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FornecedorNome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FornecedorCnpj = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Fornecedor", x => x.FornecedorId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Peca",
+                columns: table => new
+                {
+                    PecaId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PecaNome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    QuantidadeEstoque = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Peca", x => x.PecaId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Setor",
                 columns: table => new
                 {
@@ -48,6 +89,19 @@ namespace SistemaGHMM.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Setor", x => x.SetorId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TipoManutencao",
+                columns: table => new
+                {
+                    TipoManutencaoId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TipoManutencaoNome = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TipoManutencao", x => x.TipoManutencaoId);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,7 +131,7 @@ namespace SistemaGHMM.Migrations
                     FuncionarioDataNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FuncionarioEscolaridade = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CargoId = table.Column<int>(type: "int", nullable: false),
-                    FuncionarioSetor = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SetorId = table.Column<int>(type: "int", nullable: false),
                     FuncionarioSenha = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -88,6 +142,34 @@ namespace SistemaGHMM.Migrations
                         column: x => x.CargoId,
                         principalTable: "Cargo",
                         principalColumn: "CargoId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Funcionario_Setor_SetorId",
+                        column: x => x.SetorId,
+                        principalTable: "Setor",
+                        principalColumn: "SetorId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Manutencao",
+                columns: table => new
+                {
+                    ManutencaoId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TipoManutencaoId = table.Column<int>(type: "int", nullable: false),
+                    ManutencaoData = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ManutencaoDescricao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ManutencaoCusto = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Manutencao", x => x.ManutencaoId);
+                    table.ForeignKey(
+                        name: "FK_Manutencao_TipoManutencao_TipoManutencaoId",
+                        column: x => x.TipoManutencaoId,
+                        principalTable: "TipoManutencao",
+                        principalColumn: "TipoManutencaoId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -151,10 +233,56 @@ namespace SistemaGHMM.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ManutencaoEPecas",
+                columns: table => new
+                {
+                    ManutencaoEPecasId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ManutencaoId = table.Column<int>(type: "int", nullable: false),
+                    PecaId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ManutencaoEPecas", x => x.ManutencaoEPecasId);
+                    table.ForeignKey(
+                        name: "FK_ManutencaoEPecas_Manutencao_ManutencaoId",
+                        column: x => x.ManutencaoId,
+                        principalTable: "Manutencao",
+                        principalColumn: "ManutencaoId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ManutencaoEPecas_Peca_PecaId",
+                        column: x => x.PecaId,
+                        principalTable: "Peca",
+                        principalColumn: "PecaId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Funcionario_CargoId",
                 table: "Funcionario",
                 column: "CargoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Funcionario_SetorId",
+                table: "Funcionario",
+                column: "SetorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Manutencao_TipoManutencaoId",
+                table: "Manutencao",
+                column: "TipoManutencaoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ManutencaoEPecas_ManutencaoId",
+                table: "ManutencaoEPecas",
+                column: "ManutencaoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ManutencaoEPecas_PecaId",
+                table: "ManutencaoEPecas",
+                column: "PecaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Maquina_FabricanteId",
@@ -181,16 +309,28 @@ namespace SistemaGHMM.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "CategoriaPeca");
+
+            migrationBuilder.DropTable(
+                name: "Fornecedor");
+
+            migrationBuilder.DropTable(
+                name: "ManutencaoEPecas");
+
+            migrationBuilder.DropTable(
                 name: "Maquina");
 
             migrationBuilder.DropTable(
                 name: "Relatorio");
 
             migrationBuilder.DropTable(
-                name: "Fabricante");
+                name: "Manutencao");
 
             migrationBuilder.DropTable(
-                name: "Setor");
+                name: "Peca");
+
+            migrationBuilder.DropTable(
+                name: "Fabricante");
 
             migrationBuilder.DropTable(
                 name: "TipoMaquina");
@@ -199,7 +339,13 @@ namespace SistemaGHMM.Migrations
                 name: "Funcionario");
 
             migrationBuilder.DropTable(
+                name: "TipoManutencao");
+
+            migrationBuilder.DropTable(
                 name: "Cargo");
+
+            migrationBuilder.DropTable(
+                name: "Setor");
         }
     }
 }

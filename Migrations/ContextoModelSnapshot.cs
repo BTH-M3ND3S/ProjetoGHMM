@@ -41,6 +41,25 @@ namespace SistemaGHMM.Migrations
                     b.ToTable("Cargo");
                 });
 
+            modelBuilder.Entity("SistemaGHMM.Models.CategoriaPecaModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("CategoriaPecaId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CategoriaPecaNome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("CategoriaPecaNome");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CategoriaPeca");
+                });
+
             modelBuilder.Entity("SistemaGHMM.Models.FabricanteModel", b =>
                 {
                     b.Property<int>("Id")
@@ -58,6 +77,30 @@ namespace SistemaGHMM.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Fabricante");
+                });
+
+            modelBuilder.Entity("SistemaGHMM.Models.FornecedorModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("FornecedorId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FornecedorCnpj")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("FornecedorCnpj");
+
+                    b.Property<string>("FornecedorNome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("FornecedorNome");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Fornecedor");
                 });
 
             modelBuilder.Entity("SistemaGHMM.Models.FuncionarioModel", b =>
@@ -105,21 +148,80 @@ namespace SistemaGHMM.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("FuncionarioSenha");
 
-                    b.Property<string>("FuncionarioSetor")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("FuncionarioSetor");
-
                     b.Property<string>("FuncionarioTelefone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("FuncionarioTelefone");
 
+                    b.Property<int>("SetorId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CargoId");
 
+                    b.HasIndex("SetorId");
+
                     b.ToTable("Funcionario");
+                });
+
+            modelBuilder.Entity("SistemaGHMM.Models.ManutencaoEPecasModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ManutencaoEPecasId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ManutencaoId")
+                        .HasColumnType("int")
+                        .HasColumnName("ManutencaoId");
+
+                    b.Property<int>("PecaId")
+                        .HasColumnType("int")
+                        .HasColumnName("PecaId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ManutencaoId");
+
+                    b.HasIndex("PecaId");
+
+                    b.ToTable("ManutencaoEPecas");
+                });
+
+            modelBuilder.Entity("SistemaGHMM.Models.ManutencaoModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ManutencaoId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("ManutencaoCusto")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("ManutencaoCusto");
+
+                    b.Property<DateTime>("ManutencaoData")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ManutencaoData");
+
+                    b.Property<string>("ManutencaoDescricao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ManutencaoDescricao");
+
+                    b.Property<int>("TipoManutencaoId")
+                        .HasColumnType("int")
+                        .HasColumnName("TipoManutencaoId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TipoManutencaoId");
+
+                    b.ToTable("Manutencao");
                 });
 
             modelBuilder.Entity("SistemaGHMM.Models.MaquinaModel", b =>
@@ -188,6 +290,29 @@ namespace SistemaGHMM.Migrations
                     b.ToTable("Maquina");
                 });
 
+            modelBuilder.Entity("SistemaGHMM.Models.PecaModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("PecaId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PecaNome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("PecaNome");
+
+                    b.Property<int>("QuantidadeEstoque")
+                        .HasColumnType("int")
+                        .HasColumnName("QuantidadeEstoque");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Peca");
+                });
+
             modelBuilder.Entity("SistemaGHMM.Models.RelatorioModel", b =>
                 {
                     b.Property<int>("Id")
@@ -232,6 +357,25 @@ namespace SistemaGHMM.Migrations
                     b.ToTable("Setor");
                 });
 
+            modelBuilder.Entity("SistemaGHMM.Models.TipoManutencaoModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("TipoManutencaoId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("TipoManutencaoNome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("TipoManutencaoNome");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoManutencao");
+                });
+
             modelBuilder.Entity("SistemaGHMM.Models.TipoMaquinaModel", b =>
                 {
                     b.Property<int>("Id")
@@ -259,7 +403,45 @@ namespace SistemaGHMM.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SistemaGHMM.Models.SetorModel", "Setor")
+                        .WithMany()
+                        .HasForeignKey("SetorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Cargo");
+
+                    b.Navigation("Setor");
+                });
+
+            modelBuilder.Entity("SistemaGHMM.Models.ManutencaoEPecasModel", b =>
+                {
+                    b.HasOne("SistemaGHMM.Models.ManutencaoModel", "Manutencao")
+                        .WithMany()
+                        .HasForeignKey("ManutencaoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SistemaGHMM.Models.PecaModel", "Peca")
+                        .WithMany()
+                        .HasForeignKey("PecaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Manutencao");
+
+                    b.Navigation("Peca");
+                });
+
+            modelBuilder.Entity("SistemaGHMM.Models.ManutencaoModel", b =>
+                {
+                    b.HasOne("SistemaGHMM.Models.TipoManutencaoModel", "TipoManutencao")
+                        .WithMany()
+                        .HasForeignKey("TipoManutencaoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TipoManutencao");
                 });
 
             modelBuilder.Entity("SistemaGHMM.Models.MaquinaModel", b =>

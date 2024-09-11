@@ -44,25 +44,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="FuncionarioEscolaridade" class="control-label"></label>
-                <select asp-for="FuncionarioEscolaridade" class="form-control">
-                    <option value="">Selecione o Nível de Escolaridade</option>
-                    <option value="Ensino Fundamental">Ensino Fundamental</option>
-                    <option value="Ensino Médio">Ensino Médio</option>
-                    <option value="Ensino Superior">Ensino Superior</option>
-                    <option value="Pós-Graduação">Pós-Graduação</option>
-                    <option value="Mestrado">Mestrado</option>
-                    <option value="Doutorado">Doutorado</option>
-                </select>
+                <input asp-for="FuncionarioEscolaridade" class="form-control" />
                 <span asp-validation-for="FuncionarioEscolaridade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CargoId" class="control-label"></label>
                 <select asp-for="CargoId" class ="form-control" asp-items="ViewBag.CargoId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="FuncionarioSetor" class="control-label"></label>
-                <input asp-for="FuncionarioSetor" class="form-control" />
-                <span asp-validation-for="FuncionarioSetor" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FuncionarioSenha" class="control-label"></label>

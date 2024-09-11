@@ -19,13 +19,13 @@ namespace SistemaGHMM.Models
 
         [ForeignKey("TipoMaquina")]
         [Column("TipoMaquinaId")]
-        [Display(Name = "Cód. Tipo de Máquina")]
+        [Display(Name = "Tipo de Máquina")]
         public int TipoMaquinaId { get; set; }
         public  TipoMaquinaModel? TipoMaquina { get; set; }
 
         [ForeignKey("Setor")]
         [Column("SetorId")]
-        [Display(Name = "Cód. Setor")]
+        [Display(Name = "Setor")]
         public int SetorId { get; set; }
         public SetorModel? Setor { get; set; }
 
@@ -42,7 +42,7 @@ namespace SistemaGHMM.Models
 
         [ForeignKey("Fabricante")]
         [Column("FabricanteId")]
-        [Display(Name = "Cód. Fabricante")]
+        [Display(Name = "Fabricante")]
         public int FabricanteId { get; set; }
         public FabricanteModel? Fabricante { get; set; }
 

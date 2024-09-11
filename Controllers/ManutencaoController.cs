@@ -9,90 +9,90 @@ using SistemaGHMM.Models;
 
 namespace SistemaGHMM.Controllers
 {
-    public class FuncionarioController : Controller
+    public class ManutencaoController : Controller
     {
         private readonly Contexto _context;
 
-        public FuncionarioController(Contexto context)
+        public ManutencaoController(Contexto context)
         {
             _context = context;
         }
 
-        // GET: Funcionario
+        // GET: Manutencao
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.Funcionario.Include(f => f.Cargo);
+            var contexto = _context.Manutencao.Include(m => m.TipoManutencao);
             return View(await contexto.ToListAsync());
         }
 
-        // GET: Funcionario/Details/5
+        // GET: Manutencao/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Funcionario == null)
+            if (id == null || _context.Manutencao == null)
             {
                 return NotFound();
             }
 
-            var funcionarioModel = await _context.Funcionario
-                .Include(f => f.Cargo)
+            var manutencaoModel = await _context.Manutencao
+                .Include(m => m.TipoManutencao)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (funcionarioModel == null)
+            if (manutencaoModel == null)
             {
                 return NotFound();
             }
 
-            return View(funcionarioModel);
+            return View(manutencaoModel);
         }
 
-        // GET: Funcionario/Create
+        // GET: Manutencao/Create
         public IActionResult Create()
         {
-            ViewData["CargoId"] = new SelectList(_context.Cargo, "Id", "CargoNome");
+            ViewData["TipoManutencaoId"] = new SelectList(_context.TipoManutencao, "Id", "TipoManutencaoNome");
             return View();
         }
 
-        // POST: Funcionario/Create
+        // POST: Manutencao/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FotoUrl,FuncionarioNome,FuncionarioCpf,FuncionarioEmail,FuncionarioTelefone,FuncionarioDataNascimento,FuncionarioEscolaridade,CargoId,FuncionarioSenha")] FuncionarioModel funcionarioModel)
+        public async Task<IActionResult> Create([Bind("Id,TipoManutencaoId,ManutencaoData,ManutencaoDescricao,ManutencaoCusto")] ManutencaoModel manutencaoModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(funcionarioModel);
+                _context.Add(manutencaoModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CargoId"] = new SelectList(_context.Cargo, "Id", "CargoNome", funcionarioModel.CargoId);
-            return View(funcionarioModel);
+            ViewData["TipoManutencaoId"] = new SelectList(_context.TipoManutencao, "Id", "TipoManutencaoNome", manutencaoModel.TipoManutencaoId);
+            return View(manutencaoModel);
         }
 
-        // GET: Funcionario/Edit/5
+        // GET: Manutencao/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Funcionario == null)
+            if (id == null || _context.Manutencao == null)
             {
                 return NotFound();
             }
 
-            var funcionarioModel = await _context.Funcionario.FindAsync(id);
-            if (funcionarioModel == null)
+            var manutencaoModel = await _context.Manutencao.FindAsync(id);
+            if (manutencaoModel == null)
             {
                 return NotFound();
             }
-            ViewData["CargoId"] = new SelectList(_context.Cargo, "Id", "CargoNome", funcionarioModel.CargoId);
-            return View(funcionarioModel);
+            ViewData["TipoManutencaoId"] = new SelectList(_context.TipoManutencao, "Id", "TipoManutencaoNome", manutencaoModel.TipoManutencaoId);
+            return View(manutencaoModel);
         }
 
-        // POST: Funcionario/Edit/5
+        // POST: Manutencao/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FotoUrl,FuncionarioNome,FuncionarioCpf,FuncionarioEmail,FuncionarioTelefone,FuncionarioDataNascimento,FuncionarioEscolaridade,CargoId,FuncionarioSenha")] FuncionarioModel funcionarioModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,TipoManutencaoId,ManutencaoData,ManutencaoDescricao,ManutencaoCusto")] ManutencaoModel manutencaoModel)
         {
-            if (id != funcionarioModel.Id)
+            if (id != manutencaoModel.Id)
             {
                 return NotFound();
             }
@@ -101,12 +101,12 @@ namespace SistemaGHMM.Controllers
             {
                 try
                 {
-                    _context.Update(funcionarioModel);
+                    _context.Update(manutencaoModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FuncionarioModelExists(funcionarioModel.Id))
+                    if (!ManutencaoModelExists(manutencaoModel.Id))
                     {
                         return NotFound();
                     }
@@ -117,51 +117,51 @@ namespace SistemaGHMM.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CargoId"] = new SelectList(_context.Cargo, "Id", "CargoNome", funcionarioModel.CargoId);
-            return View(funcionarioModel);
+            ViewData["TipoManutencaoId"] = new SelectList(_context.TipoManutencao, "Id", "TipoManutencaoNome", manutencaoModel.TipoManutencaoId);
+            return View(manutencaoModel);
         }
 
-        // GET: Funcionario/Delete/5
+        // GET: Manutencao/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Funcionario == null)
+            if (id == null || _context.Manutencao == null)
             {
                 return NotFound();
             }
 
-            var funcionarioModel = await _context.Funcionario
-                .Include(f => f.Cargo)
+            var manutencaoModel = await _context.Manutencao
+                .Include(m => m.TipoManutencao)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (funcionarioModel == null)
+            if (manutencaoModel == null)
             {
                 return NotFound();
             }
 
-            return View(funcionarioModel);
+            return View(manutencaoModel);
         }
 
-        // POST: Funcionario/Delete/5
+        // POST: Manutencao/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Funcionario == null)
+            if (_context.Manutencao == null)
             {
-                return Problem("Entity set 'Contexto.Funcionario'  is null.");
+                return Problem("Entity set 'Contexto.Manutencao'  is null.");
             }
-            var funcionarioModel = await _context.Funcionario.FindAsync(id);
-            if (funcionarioModel != null)
+            var manutencaoModel = await _context.Manutencao.FindAsync(id);
+            if (manutencaoModel != null)
             {
-                _context.Funcionario.Remove(funcionarioModel);
+                _context.Manutencao.Remove(manutencaoModel);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool FuncionarioModelExists(int id)
+        private bool ManutencaoModelExists(int id)
         {
-          return (_context.Funcionario?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Manutencao?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
