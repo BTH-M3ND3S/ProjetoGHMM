@@ -31,7 +31,13 @@ namespace SistemaGHMM.Models
         [Column("ManutencaoCusto")]
         [Display(Name = "Custo da manutenção")]
         [Required]
-        public decimal ManutencaoCusto { get; set; } 
+        public decimal ManutencaoCusto { get; set; }
+
+        [ForeignKey("Tecnicos")]
+        [Column("Tecnicos")]
+        [Display(Name = "Tecnico")]
+        public int TecnicosId { get; set; }
+        public TecnicosModel? Tecnicos { get; set; }
 
 
 

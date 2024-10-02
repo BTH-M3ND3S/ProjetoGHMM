@@ -1,4 +1,4 @@
-﻿@model SistemaGHMM.Models.RelatorioModel
+﻿@model SistemaGHMM.Models.TecnicoUsuarioModel
 
 @{
     ViewData["Title"] = "Details";
@@ -7,20 +7,20 @@
 <h1>Details</h1>
 
 <div>
-    <h4>RelatorioModel</h4>
+    <h4>TecnicoUsuarioModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RelatorioConteudo)
+            @Html.DisplayNameFor(model => model.Tecnicos)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RelatorioConteudo)
+            @Html.DisplayFor(model => model.Tecnicos.TecnicoNome)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Funcionario)
+            @Html.DisplayNameFor(model => model.Usuario)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Funcionario.FuncionarioCpf)
+            @Html.DisplayFor(model => model.Usuario.UsuarioCpf)
         </dd>
     </dl>
 </div>

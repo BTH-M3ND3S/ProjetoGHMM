@@ -42,6 +42,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.MaquinaVoltagem)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaquinaDetalhes)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -77,6 +80,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MaquinaVoltagem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaquinaDetalhes)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

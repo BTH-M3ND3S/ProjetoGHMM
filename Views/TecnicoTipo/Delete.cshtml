@@ -1,4 +1,4 @@
-﻿@model SistemaGHMM.Models.RelatorioModel
+﻿@model SistemaGHMM.Models.TecnicoTipoModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -8,20 +8,14 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>RelatorioModel</h4>
+    <h4>TecnicoTipoModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RelatorioConteudo)
+            @Html.DisplayNameFor(model => model.TecnicoTipoDescricao)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RelatorioConteudo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Funcionario)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Funcionario.FuncionarioCpf)
+            @Html.DisplayFor(model => model.TecnicoTipoDescricao)
         </dd>
     </dl>
     

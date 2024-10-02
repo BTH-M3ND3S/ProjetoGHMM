@@ -21,9 +21,8 @@ namespace SistemaGHMM.Controllers
         // GET: Peca
         public async Task<IActionResult> Index()
         {
-              return _context.Peca != null ? 
-                          View(await _context.Peca.ToListAsync()) :
-                          Problem("Entity set 'Contexto.Peca'  is null.");
+            var contexto = _context.Peca.Include(p => p.CategoriaPeca).Include(p => p.Fornecedor);
+            return View(await contexto.ToListAsync());
         }
 
         // GET: Peca/Details/5
@@ -35,6 +34,8 @@ namespace SistemaGHMM.Controllers
             }
 
             var pecaModel = await _context.Peca
+                .Include(p => p.CategoriaPeca)
+                .Include(p => p.Fornecedor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (pecaModel == null)
             {
@@ -47,6 +48,8 @@ namespace SistemaGHMM.Controllers
         // GET: Peca/Create
         public IActionResult Create()
         {
+            ViewData["CategoriaPecaId"] = new SelectList(_context.CateogriaPeca, "Id", "CategoriaPecaNome");
+            ViewData["FornecedorId"] = new SelectList(_context.Fornecedor, "Id", "FornecedorCnpj");
             return View();
         }
 
@@ -55,7 +58,7 @@ namespace SistemaGHMM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PecaNome,QuantidadeEstoque")] PecaModel pecaModel)
+        public async Task<IActionResult> Create([Bind("Id,PecaNome,QuantidadeEstoque,FornecedorId,CategoriaPecaId")] PecaModel pecaModel)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +66,8 @@ namespace SistemaGHMM.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CategoriaPecaId"] = new SelectList(_context.CateogriaPeca, "Id", "CategoriaPecaNome", pecaModel.CategoriaPecaId);
+            ViewData["FornecedorId"] = new SelectList(_context.Fornecedor, "Id", "FornecedorCnpj", pecaModel.FornecedorId);
             return View(pecaModel);
         }
 
@@ -79,6 +84,8 @@ namespace SistemaGHMM.Controllers
             {
                 return NotFound();
             }
+            ViewData["CategoriaPecaId"] = new SelectList(_context.CateogriaPeca, "Id", "CategoriaPecaNome", pecaModel.CategoriaPecaId);
+            ViewData["FornecedorId"] = new SelectList(_context.Fornecedor, "Id", "FornecedorCnpj", pecaModel.FornecedorId);
             return View(pecaModel);
         }
 
@@ -87,7 +94,7 @@ namespace SistemaGHMM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PecaNome,QuantidadeEstoque")] PecaModel pecaModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PecaNome,QuantidadeEstoque,FornecedorId,CategoriaPecaId")] PecaModel pecaModel)
         {
             if (id != pecaModel.Id)
             {
@@ -114,6 +121,8 @@ namespace SistemaGHMM.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CategoriaPecaId"] = new SelectList(_context.CateogriaPeca, "Id", "CategoriaPecaNome", pecaModel.CategoriaPecaId);
+            ViewData["FornecedorId"] = new SelectList(_context.Fornecedor, "Id", "FornecedorCnpj", pecaModel.FornecedorId);
             return View(pecaModel);
         }
 
@@ -126,6 +135,8 @@ namespace SistemaGHMM.Controllers
             }
 
             var pecaModel = await _context.Peca
+                .Include(p => p.CategoriaPeca)
+                .Include(p => p.Fornecedor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (pecaModel == null)
             {

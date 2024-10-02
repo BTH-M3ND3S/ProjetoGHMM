@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SistemaGHMM.Models
 {
+    [Table("Fabricante")]
     public class FabricanteModel
     {
         [Key]

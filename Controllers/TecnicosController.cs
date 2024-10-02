@@ -9,90 +9,90 @@ using SistemaGHMM.Models;
 
 namespace SistemaGHMM.Controllers
 {
-    public class RelatorioController : Controller
+    public class TecnicosController : Controller
     {
         private readonly Contexto _context;
 
-        public RelatorioController(Contexto context)
+        public TecnicosController(Contexto context)
         {
             _context = context;
         }
 
-        // GET: Relatorio
+        // GET: Tecnicos
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.RelatorioModel.Include(r => r.Funcionario);
+            var contexto = _context.Tecnicos.Include(t => t.TecnicoTipo);
             return View(await contexto.ToListAsync());
         }
 
-        // GET: Relatorio/Details/5
+        // GET: Tecnicos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.RelatorioModel == null)
+            if (id == null || _context.Tecnicos == null)
             {
                 return NotFound();
             }
 
-            var relatorioModel = await _context.RelatorioModel
-                .Include(r => r.Funcionario)
+            var tecnicosModel = await _context.Tecnicos
+                .Include(t => t.TecnicoTipo)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (relatorioModel == null)
+            if (tecnicosModel == null)
             {
                 return NotFound();
             }
 
-            return View(relatorioModel);
+            return View(tecnicosModel);
         }
 
-        // GET: Relatorio/Create
+        // GET: Tecnicos/Create
         public IActionResult Create()
         {
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionario, "Id", "FuncionarioCpf");
+            ViewData["TecnicoTipoId"] = new SelectList(_context.TecnicoTipo, "Id", "TecnicoTipoDescricao");
             return View();
         }
 
-        // POST: Relatorio/Create
+        // POST: Tecnicos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RelatorioConteudo,FuncionarioId")] RelatorioModel relatorioModel)
+        public async Task<IActionResult> Create([Bind("Id,TecnicoNome,TecnicoDatalhes,TecnicoTipoId")] TecnicosModel tecnicosModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(relatorioModel);
+                _context.Add(tecnicosModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionario, "Id", "FuncionarioCpf", relatorioModel.FuncionarioId);
-            return View(relatorioModel);
+            ViewData["TecnicoTipoId"] = new SelectList(_context.TecnicoTipo, "Id", "TecnicoTipoDescricao", tecnicosModel.TecnicoTipoId);
+            return View(tecnicosModel);
         }
 
-        // GET: Relatorio/Edit/5
+        // GET: Tecnicos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.RelatorioModel == null)
+            if (id == null || _context.Tecnicos == null)
             {
                 return NotFound();
             }
 
-            var relatorioModel = await _context.RelatorioModel.FindAsync(id);
-            if (relatorioModel == null)
+            var tecnicosModel = await _context.Tecnicos.FindAsync(id);
+            if (tecnicosModel == null)
             {
                 return NotFound();
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionario, "Id", "FuncionarioCpf", relatorioModel.FuncionarioId);
-            return View(relatorioModel);
+            ViewData["TecnicoTipoId"] = new SelectList(_context.TecnicoTipo, "Id", "TecnicoTipoDescricao", tecnicosModel.TecnicoTipoId);
+            return View(tecnicosModel);
         }
 
-        // POST: Relatorio/Edit/5
+        // POST: Tecnicos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,RelatorioConteudo,FuncionarioId")] RelatorioModel relatorioModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,TecnicoNome,TecnicoDatalhes,TecnicoTipoId")] TecnicosModel tecnicosModel)
         {
-            if (id != relatorioModel.Id)
+            if (id != tecnicosModel.Id)
             {
                 return NotFound();
             }
@@ -101,12 +101,12 @@ namespace SistemaGHMM.Controllers
             {
                 try
                 {
-                    _context.Update(relatorioModel);
+                    _context.Update(tecnicosModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RelatorioModelExists(relatorioModel.Id))
+                    if (!TecnicosModelExists(tecnicosModel.Id))
                     {
                         return NotFound();
                     }
@@ -117,51 +117,51 @@ namespace SistemaGHMM.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FuncionarioId"] = new SelectList(_context.Funcionario, "Id", "FuncionarioCpf", relatorioModel.FuncionarioId);
-            return View(relatorioModel);
+            ViewData["TecnicoTipoId"] = new SelectList(_context.TecnicoTipo, "Id", "TecnicoTipoDescricao", tecnicosModel.TecnicoTipoId);
+            return View(tecnicosModel);
         }
 
-        // GET: Relatorio/Delete/5
+        // GET: Tecnicos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.RelatorioModel == null)
+            if (id == null || _context.Tecnicos == null)
             {
                 return NotFound();
             }
 
-            var relatorioModel = await _context.RelatorioModel
-                .Include(r => r.Funcionario)
+            var tecnicosModel = await _context.Tecnicos
+                .Include(t => t.TecnicoTipo)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (relatorioModel == null)
+            if (tecnicosModel == null)
             {
                 return NotFound();
             }
 
-            return View(relatorioModel);
+            return View(tecnicosModel);
         }
 
-        // POST: Relatorio/Delete/5
+        // POST: Tecnicos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.RelatorioModel == null)
+            if (_context.Tecnicos == null)
             {
-                return Problem("Entity set 'Contexto.RelatorioModel'  is null.");
+                return Problem("Entity set 'Contexto.Tecnicos'  is null.");
             }
-            var relatorioModel = await _context.RelatorioModel.FindAsync(id);
-            if (relatorioModel != null)
+            var tecnicosModel = await _context.Tecnicos.FindAsync(id);
+            if (tecnicosModel != null)
             {
-                _context.RelatorioModel.Remove(relatorioModel);
+                _context.Tecnicos.Remove(tecnicosModel);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RelatorioModelExists(int id)
+        private bool TecnicosModelExists(int id)
         {
-          return (_context.RelatorioModel?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Tecnicos?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace SistemaGHMM.Controllers
         // GET: Manutencao
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.Manutencao.Include(m => m.TipoManutencao);
+            var contexto = _context.Manutencao.Include(m => m.Tecnicos).Include(m => m.TipoManutencao);
             return View(await contexto.ToListAsync());
         }
 
@@ -34,6 +34,7 @@ namespace SistemaGHMM.Controllers
             }
 
             var manutencaoModel = await _context.Manutencao
+                .Include(m => m.Tecnicos)
                 .Include(m => m.TipoManutencao)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (manutencaoModel == null)
@@ -47,6 +48,7 @@ namespace SistemaGHMM.Controllers
         // GET: Manutencao/Create
         public IActionResult Create()
         {
+            ViewData["TecnicosId"] = new SelectList(_context.Tecnicos, "Id", "TecnicoNome");
             ViewData["TipoManutencaoId"] = new SelectList(_context.TipoManutencao, "Id", "TipoManutencaoNome");
             return View();
         }
@@ -56,7 +58,7 @@ namespace SistemaGHMM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TipoManutencaoId,ManutencaoData,ManutencaoDescricao,ManutencaoCusto")] ManutencaoModel manutencaoModel)
+        public async Task<IActionResult> Create([Bind("Id,TipoManutencaoId,ManutencaoData,ManutencaoDescricao,ManutencaoCusto,TecnicosId")] ManutencaoModel manutencaoModel)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +66,7 @@ namespace SistemaGHMM.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TecnicosId"] = new SelectList(_context.Tecnicos, "Id", "TecnicoNome", manutencaoModel.TecnicosId);
             ViewData["TipoManutencaoId"] = new SelectList(_context.TipoManutencao, "Id", "TipoManutencaoNome", manutencaoModel.TipoManutencaoId);
             return View(manutencaoModel);
         }
@@ -81,6 +84,7 @@ namespace SistemaGHMM.Controllers
             {
                 return NotFound();
             }
+            ViewData["TecnicosId"] = new SelectList(_context.Tecnicos, "Id", "TecnicoNome", manutencaoModel.TecnicosId);
             ViewData["TipoManutencaoId"] = new SelectList(_context.TipoManutencao, "Id", "TipoManutencaoNome", manutencaoModel.TipoManutencaoId);
             return View(manutencaoModel);
         }
@@ -90,7 +94,7 @@ namespace SistemaGHMM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,TipoManutencaoId,ManutencaoData,ManutencaoDescricao,ManutencaoCusto")] ManutencaoModel manutencaoModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,TipoManutencaoId,ManutencaoData,ManutencaoDescricao,ManutencaoCusto,TecnicosId")] ManutencaoModel manutencaoModel)
         {
             if (id != manutencaoModel.Id)
             {
@@ -117,6 +121,7 @@ namespace SistemaGHMM.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TecnicosId"] = new SelectList(_context.Tecnicos, "Id", "TecnicoNome", manutencaoModel.TecnicosId);
             ViewData["TipoManutencaoId"] = new SelectList(_context.TipoManutencao, "Id", "TipoManutencaoNome", manutencaoModel.TipoManutencaoId);
             return View(manutencaoModel);
         }
@@ -130,6 +135,7 @@ namespace SistemaGHMM.Controllers
             }
 
             var manutencaoModel = await _context.Manutencao
+                .Include(m => m.Tecnicos)
                 .Include(m => m.TipoManutencao)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (manutencaoModel == null)

@@ -63,5 +63,9 @@ namespace SistemaGHMM.Models
         [Column("Voltagem")]
         [Display(Name = "Voltagem")]
         public int MaquinaVoltagem { get; set; }
+
+        [Column("MaquinaDetalhes")]
+        [Display(Name = "Detalhes da Maquina")]
+        public string MaquinaDetalhes { get; set; } = string.Empty;
     }
 }

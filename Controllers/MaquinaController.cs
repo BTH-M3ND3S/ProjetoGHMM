@@ -60,7 +60,7 @@ namespace SistemaGHMM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,MaquinaNome,TipoMaquinaId,SetorId,MaquinaModelo,MaquinaNumeroSerie,FabricanteId,MaquinaDataAquisicao,MaquinaFotoUrl,MaquinaPeso,MaquinaVoltagem")] MaquinaModel maquinaModel)
+        public async Task<IActionResult> Create([Bind("Id,MaquinaNome,TipoMaquinaId,SetorId,MaquinaModelo,MaquinaNumeroSerie,FabricanteId,MaquinaDataAquisicao,MaquinaFotoUrl,MaquinaPeso,MaquinaVoltagem,MaquinaDetalhes")] MaquinaModel maquinaModel)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace SistemaGHMM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,MaquinaNome,TipoMaquinaId,SetorId,MaquinaModelo,MaquinaNumeroSerie,FabricanteId,MaquinaDataAquisicao,MaquinaFotoUrl,MaquinaPeso,MaquinaVoltagem")] MaquinaModel maquinaModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,MaquinaNome,TipoMaquinaId,SetorId,MaquinaModelo,MaquinaNumeroSerie,FabricanteId,MaquinaDataAquisicao,MaquinaFotoUrl,MaquinaPeso,MaquinaVoltagem,MaquinaDetalhes")] MaquinaModel maquinaModel)
         {
             if (id != maquinaModel.Id)
             {

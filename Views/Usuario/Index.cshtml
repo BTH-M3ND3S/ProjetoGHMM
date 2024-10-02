@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SistemaGHMM.Models.FuncionarioModel>
+﻿@model IEnumerable<SistemaGHMM.Models.UsuarioModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,28 +16,31 @@
                 @Html.DisplayNameFor(model => model.FotoUrl)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FuncionarioNome)
+                @Html.DisplayNameFor(model => model.UsuarioNome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FuncionarioCpf)
+                @Html.DisplayNameFor(model => model.UsuarioCpf)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FuncionarioEmail)
+                @Html.DisplayNameFor(model => model.UsuarioEmail)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FuncionarioTelefone)
+                @Html.DisplayNameFor(model => model.UsuarioTelefone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FuncionarioDataNascimento)
+                @Html.DisplayNameFor(model => model.UsuarioDataNascimento)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FuncionarioEscolaridade)
+                @Html.DisplayNameFor(model => model.UsuarioEscolaridade)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Cargo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FuncionarioSenha)
+                @Html.DisplayNameFor(model => model.Setor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioSenha)
             </th>
             <th></th>
         </tr>
@@ -49,28 +52,31 @@
                 @Html.DisplayFor(modelItem => item.FotoUrl)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FuncionarioNome)
+                @Html.DisplayFor(modelItem => item.UsuarioNome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FuncionarioCpf)
+                @Html.DisplayFor(modelItem => item.UsuarioCpf)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FuncionarioEmail)
+                @Html.DisplayFor(modelItem => item.UsuarioEmail)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FuncionarioTelefone)
+                @Html.DisplayFor(modelItem => item.UsuarioTelefone)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FuncionarioDataNascimento)
+                @Html.DisplayFor(modelItem => item.UsuarioDataNascimento)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FuncionarioEscolaridade)
+                @Html.DisplayFor(modelItem => item.UsuarioEscolaridade)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Cargo.CargoNome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FuncionarioSenha)
+                @Html.DisplayFor(modelItem => item.Setor.SetorNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsuarioSenha)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

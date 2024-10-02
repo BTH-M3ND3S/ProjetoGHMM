@@ -11,13 +11,25 @@ namespace SistemaGHMM.Models
         public int Id { get; set; }
 
         [Column("PecaNome")]
-        [Display(Name = "Nom da peça")]
+        [Display(Name = "Nome da peça")]
         [Required]
         public string PecaNome { get; set; } = string.Empty;
 
         [Column("QuantidadeEstoque")]
         [Display(Name = "Quantidade em estoque da peça")]
         [Required]
-        public int QuantidadeEstoque { get; set; } 
+        public int QuantidadeEstoque { get; set; }
+
+        [ForeignKey("Fornecedor")]
+        [Column("Fornecedor")]
+        [Display(Name = "Fornecedor")]
+        public int FornecedorId { get; set; }
+        public FornecedorModel? Fornecedor { get; set; }
+
+        [ForeignKey("CategoriaPeca")]
+        [Column("CategoriaPeca")]
+        [Display(Name = "Categoria da Peca")]
+        public int CategoriaPecaId { get; set; }
+        public CategoriaPecaModel? CategoriaPeca { get; set; }
     }
 }

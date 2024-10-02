@@ -1,4 +1,4 @@
-﻿@model SistemaGHMM.Models.FuncionarioModel
+﻿@model SistemaGHMM.Models.UsuarioModel
 
 @{
     ViewData["Title"] = "Details";
@@ -7,7 +7,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>FuncionarioModel</h4>
+    <h4>UsuarioModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -17,40 +17,40 @@
             @Html.DisplayFor(model => model.FotoUrl)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FuncionarioNome)
+            @Html.DisplayNameFor(model => model.UsuarioNome)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FuncionarioNome)
+            @Html.DisplayFor(model => model.UsuarioNome)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FuncionarioCpf)
+            @Html.DisplayNameFor(model => model.UsuarioCpf)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FuncionarioCpf)
+            @Html.DisplayFor(model => model.UsuarioCpf)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FuncionarioEmail)
+            @Html.DisplayNameFor(model => model.UsuarioEmail)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FuncionarioEmail)
+            @Html.DisplayFor(model => model.UsuarioEmail)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FuncionarioTelefone)
+            @Html.DisplayNameFor(model => model.UsuarioTelefone)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FuncionarioTelefone)
+            @Html.DisplayFor(model => model.UsuarioTelefone)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FuncionarioDataNascimento)
+            @Html.DisplayNameFor(model => model.UsuarioDataNascimento)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FuncionarioDataNascimento)
+            @Html.DisplayFor(model => model.UsuarioDataNascimento)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FuncionarioEscolaridade)
+            @Html.DisplayNameFor(model => model.UsuarioEscolaridade)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FuncionarioEscolaridade)
+            @Html.DisplayFor(model => model.UsuarioEscolaridade)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Cargo)
@@ -59,10 +59,16 @@
             @Html.DisplayFor(model => model.Cargo.CargoNome)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FuncionarioSenha)
+            @Html.DisplayNameFor(model => model.Setor)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FuncionarioSenha)
+            @Html.DisplayFor(model => model.Setor.SetorNome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UsuarioSenha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UsuarioSenha)
         </dd>
     </dl>
 </div>
