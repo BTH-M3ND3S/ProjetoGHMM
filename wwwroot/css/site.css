@@ -1,22 +1,73 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    html {
+        font-size: 13.5px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+.logo {
+    width: 20%;
+    color: #ffffff;
+    font-family: "Roboto", Helvetica;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 36px;
+    text-align: center;
 }
+
+.button-logo {
+    all: unset;
+    display: flex;
+    justify-content: center;
+    padding: 14.3px 0px 11.31px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.header {
+    display: inline-flex;
+    background-color: #000000;
+}
+
+.div-opcoes {
+    width: 50%;
+    display: inline-flex;
+}
+
+.caixa-nav-opções {
+    height: 36px;
+    width: 80%;
+    display: inline-flex;
+}
+
+.navbar-nav-1 {
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    padding: 10px 0px 11px;
+}
+
+.nav-item {
+    margin-right: 10px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+
+
+

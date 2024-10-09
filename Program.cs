@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<Contexto>
-    (options => options.UseSqlServer("Data Source=SP-1491036\\SQLSENAI;Initial Catalog = SistemaGHMM;Integrated Security = True;TrustServerCertificate = true"));
+    (options => options.UseSqlServer("Data Source=SP-1491005\\SQLSENAI;Initial Catalog = SistemaGHMM;Integrated Security = True;TrustServerCertificate = true"));
 
 var app = builder.Build();
 

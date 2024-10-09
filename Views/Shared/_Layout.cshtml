@@ -7,86 +7,79 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SistemaGHMM.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <script src="https://kit.fontawesome.com/c675666b72.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SistemaGHMM</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+       <nav class="header">
+            <div class="div-opcoes">
+                <div class="logo">
+                    <a class="button-logo" asp-area="Home" asp-controller="Home" asp-action="Index">GHMM</a>
+                </div>
+
+                <div class="caixa-nav-opções">
+                    <ul class="navbar-nav-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index">Usuario</a>
+                            <a class="nav-link" asp-area="" asp-controller="Usuario" asp-action="Index">Usuario</a>
                             <li/>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cargo" asp-action="Index">Cargo</a>
+                            <a class="nav-link" asp-area="" asp-controller="Cargo" asp-action="Index">Cargo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Setor" asp-action="Index">Setor</a>
+                            <a class="nav-link" asp-area="" asp-controller="Setor" asp-action="Index">Setor</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Maquina" asp-action="Index">Maquina</a>
+                            <a class="nav-link" asp-area="" asp-controller="Maquina" asp-action="Index">Maquina</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Fabricante" asp-action="Index">Fabricante</a>
+                            <a class="nav-link" asp-area="" asp-controller="Fabricante" asp-action="Index">Fabricante</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TipoMaquina" asp-action="Index">TipoMaquina</a>
+                            <a class="nav-link" asp-area="" asp-controller="TipoMaquina" asp-action="Index">Tipo Maquina</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TipoManutencao" asp-action="Index">TipoManutencao</a>
+                            <a class="nav-link" asp-area="" asp-controller="TipoManutencao" asp-action="Index">Tipo Manutencao</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Manutencao" asp-action="Index">Manutenção</a>
+                            <a class="nav-link" asp-area="" asp-controller="Manutencao" asp-action="Index">Manutenção</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CategoriaPeca" asp-action="Index">CategoriaPeca</a>
+                            <a class="nav-link" asp-area="" asp-controller="CategoriaPeca" asp-action="Index">Categ. Peca</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Fornecedor" asp-action="Index">Fornecedor</a>
+                            <a class="nav-link" asp-area="" asp-controller="Fornecedor" asp-action="Index">Fornecedor</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ManutencaoEPecas" asp-action="Index">Manutenção e peças</a>
+                            <a class="nav-link" asp-area="" asp-controller="ManutencaoEPecas" asp-action="Index">Manutenção/Peças</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Peca" asp-action="Index">Peca</a>
+                            <a class="nav-link" asp-area="" asp-controller="Peca" asp-action="Index">Peca</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Tecnicos" asp-action="Index">Tecnicos</a>
+                            <a class="nav-link" asp-area="" asp-controller="Tecnicos" asp-action="Index">Tecnicos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TecnicoTipo" asp-action="Index">TecnicoTipo</a>
+                            <a class="nav-link" asp-area="" asp-controller="TecnicoTipo" asp-action="Index">Tec. Tipo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TecnicoUsuario" asp-action="Index">TecnicoUsuario</a>
+                            <a class="nav-link" asp-area="" asp-controller="TecnicoUsuario" asp-action="Index">Tec. Usuario</a>
                         </li>
-             
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container-1">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+    <br />
+    <br />
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - SistemaGHMM - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - Sistema GHMM
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -95,3 +88,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
