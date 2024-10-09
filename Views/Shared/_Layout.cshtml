@@ -24,43 +24,55 @@
                                 Usuário
                             </a>
                             <div class="dropdown-menu" aria-labelledby="usuarioDropdown">
-                                <a class="dropdown-item" asp-area="" asp-controller="Usuario" asp-action="Index">Usuário</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Cargo" asp-action="Index">Cargo</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Setor" asp-action="Index">Setor</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Usuario" asp-action="Index">Usuário</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Maquina" asp-action="Index">Maquina</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="maquinaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Maquina
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="maquinaDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="TipoMaquina" asp-action="Index">Tipo Maquina</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Fabricante" asp-action="Index">Fabricante</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Maquina" asp-action="Index">Maquina</a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Fabricante" asp-action="Index">Fabricante</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="manutencaoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Manutenção
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="manutencaoDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="TipoManutencao" asp-action="Index">Tipo Manutenção</a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="TipoMaquina" asp-action="Index">Tipo Maquina</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pecaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Peça
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="pecaDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="Fornecedor" asp-action="Index">Fornecedor</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="CategoriaPeca" asp-action="Index">Categ. Peça</a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="TipoManutencao" asp-action="Index">Tipo Manutencao</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="manutencaopecasDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Manutenção/Peças
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="manutencaopecaDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="Manutencao" asp-action="Index">Manutenção</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Peca" asp-action="Index">Peças</a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Manutencao" asp-action="Index">Manutenção</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="CategoriaPeca" asp-action="Index">Categ. Peca</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Fornecedor" asp-action="Index">Fornecedor</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="ManutencaoEPecas" asp-action="Index">Manutenção/Peças</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Peca" asp-action="Index">Peca</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Tecnicos" asp-action="Index">Tecnicos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="TecnicoTipo" asp-action="Index">Tec. Tipo</a>
+                         <li class="nav-item dropdown">
+                           <a class="nav-link dropdown-toggle" href="#" id="tecnicosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Técnicos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="tecnicosDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="TecnicoTipo" asp-action="Index">Tec. Tipo</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Tecnicos" asp-action="Index">Técnicos</a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="TecnicoUsuario" asp-action="Index">Tec. Usuario</a>
