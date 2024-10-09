@@ -29,6 +29,7 @@
     }
 
     .row {
+        width: 40%;
         margin: 0 auto;
         padding: 20px;
         background-color: #2E2E2E;
@@ -46,7 +47,6 @@
         }
 
     .btn-group {
-        text-align: center;
         margin-top: 20px;
     }
 </style>
@@ -126,10 +126,12 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.UsuarioSenha)
         </dd>
+        <div class="btn-group">
+            <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
+            <a asp-action="Index">Voltar</a>
+        </div>
     </dl>
+    
 </div>
 
-<div class="btn-group">
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
-    <a asp-action="Index">Voltar</a>
-</div>
+

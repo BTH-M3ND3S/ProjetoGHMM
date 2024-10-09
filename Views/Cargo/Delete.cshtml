@@ -38,6 +38,7 @@
         background-color: #2E2E2E;
         border-radius: 10px;
         justify-content: center;
+        width: 40%;
     }
 
     a {
@@ -82,11 +83,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CargoNome)
         </dd>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Deletar" class="btn btn-danger" />
+            <a asp-action="Index">Voltar</a>
+        </form>
     </dl>
     
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Deletar" class="btn btn-danger" /> 
-        <a asp-action="Index">Voltar</a>
-    </form>
+    
 </div>
