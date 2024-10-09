@@ -4,76 +4,173 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<style>
+    body {
+        background-color: #1A1A1A;
+        color: #FFFFFF;
+        font-family: 'Arial', sans-serif;
+    }
 
-<h4>UsuarioModel</h4>
+    h1, h4 {
+        color: #FFFFFF;
+        text-align: center;
+    }
+
+    hr {
+        border-top: 1px solid #FFFFFF;
+    }
+
+    .form-group label {
+        color: #FFFFFF;
+    }
+
+    .form-control {
+        background-color: #2E2E2E;
+        border: 1px solid #444;
+        color: #FFFFFF;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+        .form-control:focus {
+            border-color: #4CAF50;
+            background-color: #333333;
+            outline: none;
+        }
+
+    .text-danger {
+        color: #FF4C4C;
+    }
+
+    .btn-primary {
+        background-color: #696767;
+        border-color: #696767;
+        color: #FFFFFF;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+        .btn-primary:hover {
+            background-color: #474747;
+            border-color: #474747;
+        }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .col-md-4 {
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #2E2E2E;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        margin-bottom: 60px;
+    }
+
+    a {
+        color: #FFFF;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+    .back-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+
+<h1>Editar</h1>
+
+<h4>Usuario</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <input type="hidden" asp-for="Id" />
+
             <div class="form-group">
                 <label asp-for="FotoUrl" class="control-label"></label>
                 <input asp-for="FotoUrl" class="form-control" />
                 <span asp-validation-for="FotoUrl" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="UsuarioNome" class="control-label"></label>
                 <input asp-for="UsuarioNome" class="form-control" />
                 <span asp-validation-for="UsuarioNome" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="UsuarioCpf" class="control-label"></label>
                 <input asp-for="UsuarioCpf" class="form-control" />
                 <span asp-validation-for="UsuarioCpf" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="UsuarioEmail" class="control-label"></label>
                 <input asp-for="UsuarioEmail" class="form-control" />
                 <span asp-validation-for="UsuarioEmail" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="UsuarioTelefone" class="control-label"></label>
                 <input asp-for="UsuarioTelefone" class="form-control" />
                 <span asp-validation-for="UsuarioTelefone" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="UsuarioDataNascimento" class="control-label"></label>
                 <input asp-for="UsuarioDataNascimento" class="form-control" />
                 <span asp-validation-for="UsuarioDataNascimento" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="UsuarioEscolaridade" class="control-label"></label>
                 <input asp-for="UsuarioEscolaridade" class="form-control" />
                 <span asp-validation-for="UsuarioEscolaridade" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="CargoId" class="control-label"></label>
                 <select asp-for="CargoId" class="form-control" asp-items="ViewBag.CargoId"></select>
                 <span asp-validation-for="CargoId" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="SetorId" class="control-label"></label>
                 <select asp-for="SetorId" class="form-control" asp-items="ViewBag.SetorId"></select>
                 <span asp-validation-for="SetorId" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="UsuarioSenha" class="control-label"></label>
                 <input asp-for="UsuarioSenha" class="form-control" />
                 <span asp-validation-for="UsuarioSenha" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+            <div class="back-link">
+                <a asp-action="Index">Voltar</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

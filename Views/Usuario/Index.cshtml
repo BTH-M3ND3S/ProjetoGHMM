@@ -4,86 +4,120 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style>
+    body {
+        background-color: #1A1A1A;
+        color: #FFFFFF;
+        font-family: 'Arial', sans-serif;
+    }
+
+    h1 {
+        color: #FFFFFF;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #2E2E2E;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+        .table th, .table td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #1A1A1A;
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+
+        .table td {
+            color: #FFFFFF;
+            border-bottom: 1px solid #444;
+        }
+
+        .table tr:hover {
+            background-color: #333333;
+        }
+
+    a {
+        color: #696767;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    p a {
+        background-color: #696767;
+        color: #FFFFFF;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+        p a:hover {
+            background-color: #474747;
+            text-decoration: none;
+            color: #FFFFFF;
+        }
+
+    img {
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+<h1>Usuario</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Criar Novo</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FotoUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsuarioNome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsuarioCpf)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsuarioEmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsuarioTelefone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsuarioDataNascimento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsuarioEscolaridade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cargo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Setor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsuarioSenha)
-            </th>
+            <th>@Html.DisplayNameFor(model => model.FotoUrl)</th>
+            <th>@Html.DisplayNameFor(model => model.UsuarioNome)</th>
+            <th>@Html.DisplayNameFor(model => model.UsuarioCpf)</th>
+            <th>@Html.DisplayNameFor(model => model.UsuarioEmail)</th>
+            <th>@Html.DisplayNameFor(model => model.UsuarioTelefone)</th>
+            <th>@Html.DisplayNameFor(model => model.UsuarioDataNascimento)</th>
+            <th>@Html.DisplayNameFor(model => model.UsuarioEscolaridade)</th>
+            <th>@Html.DisplayNameFor(model => model.Cargo)</th>
+            <th>@Html.DisplayNameFor(model => model.Setor)</th>
+            <th>@Html.DisplayNameFor(model => model.UsuarioSenha)</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FotoUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsuarioNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsuarioCpf)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsuarioEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsuarioTelefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsuarioDataNascimento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsuarioEscolaridade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cargo.CargoNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Setor.SetorNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsuarioSenha)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img src="@Url.Content(item.FotoUrl)" class="imagem-usuario" /></td>
+                <td>@Html.DisplayFor(modelItem => item.UsuarioNome)</td>
+                <td>@Html.DisplayFor(modelItem => item.UsuarioCpf)</td>
+                <td>@Html.DisplayFor(modelItem => item.UsuarioEmail)</td>
+                <td>@Html.DisplayFor(modelItem => item.UsuarioTelefone)</td>
+                <td>@Html.DisplayFor(modelItem => item.UsuarioDataNascimento)</td>
+                <td>@Html.DisplayFor(modelItem => item.UsuarioEscolaridade)</td>
+                <td>@Html.DisplayFor(modelItem => item.Cargo.CargoNome)</td>
+                <td>@Html.DisplayFor(modelItem => item.Setor.SetorNome)</td>
+                <td>@Html.DisplayFor(modelItem => item.UsuarioSenha)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
