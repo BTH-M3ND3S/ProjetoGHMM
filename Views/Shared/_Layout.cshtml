@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-       <nav class="header">
+        <nav class="header">
             <div class="div-opcoes">
                 <div class="logo">
                     <a class="button-logo" asp-area="Home" asp-controller="Home" asp-action="Index">GHMM</a>
@@ -19,14 +19,15 @@
 
                 <div class="caixa-nav-opções">
                     <ul class="navbar-nav-1">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Usuario" asp-action="Index">Usuario</a>
-                            <li/>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Cargo" asp-action="Index">Cargo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Setor" asp-action="Index">Setor</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Usuário
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="usuarioDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="Usuario" asp-action="Index">Usuário</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Cargo" asp-action="Index">Cargo</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Setor" asp-action="Index">Setor</a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Maquina" asp-action="Index">Maquina</a>
@@ -40,7 +41,7 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="TipoManutencao" asp-action="Index">Tipo Manutencao</a>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Manutencao" asp-action="Index">Manutenção</a>
                         </li>
                         <li class="nav-item">
@@ -88,4 +89,3 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-

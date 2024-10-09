@@ -13,33 +13,26 @@ html {
     min-height: 100%;
 }
 
-.logo {
-    width: 20%;
-    color: #ffffff;
-    font-family: "Roboto", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    line-height: 36px;
-    text-align: center;
+.logo .button-logo {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.button-logo {
-    all: unset;
-    display: flex;
-    justify-content: center;
-    padding: 14.3px 0px 11.31px;
-    width: 100px;
-    cursor: pointer;
-}
+    .logo .button-logo:hover {
+        color: #ccc;
+    }
 
 .header {
-    display: inline-flex;
-    background-color: #000000;
+    background-color: #333;
+    padding: 10px;
 }
 
 .div-opcoes {
-    width: 50%;
-    display: inline-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .caixa-nav-opções {
@@ -49,25 +42,66 @@ html {
 }
 
 .navbar-nav-1 {
-    width: 100%;
-    flex-direction: row;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-    padding: 10px 0px 11px;
 }
 
 .nav-item {
-    margin-right: 10px;
+    position: relative;
 }
 
 .nav-link {
+    color: white;
+    padding: 10px 20px;
     text-decoration: none;
-    color: #ffffff;
-    font-weight: bold;
+    font-size: 18px;
 }
 
+    .nav-link:hover {
+        background-color: #555;
+        color: #fff;
+    }
+
+.dropdown-menu {
+    position: absolute;
+    background-color: #333;
+    border: none;
+    display: none;
+    top: 40px; 
+    min-width: 160px;
+    z-index: 1000;
+}
+
+.dropdown-item {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+    .dropdown-item:hover {
+        background-color: #555;
+    }
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.container-1 {
+    padding: 20px;
+    background-color: #f8f9fa;
+    min-height: 80vh;
+}
+
+footer {
+    background-color: #333;
+    color: #aaa;
+    padding: 20px 0;
+    text-align: center;
+}
 
 
 
