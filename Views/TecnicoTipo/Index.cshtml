@@ -3,11 +3,81 @@
 @{
     ViewData["Title"] = "Index";
 }
+<style>
+    body {
+        background-color: #1A1A1A;
+        color: #FFFFFF;
+        font-family: 'Arial', sans-serif;
+    }
 
-<h1>Index</h1>
+    h1 {
+        color: #000000;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .table {
+        width: 80%;
+        border-collapse: collapse;
+                background-color: #2E2E2E;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+        .table th, .table td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #1A1A1A;
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+
+        .table td {
+            color: #FFFFFF;
+            border-bottom: 1px solid #444;
+        }
+
+        .table tr:hover {
+            background-color: #333333;
+        }
+
+    a {
+        color: #696767;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    p {
+        text-align: center;
+    }
+    p a {
+        background-color: #696767;
+        color: #000000;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+        p a:hover {
+            background-color: #474747;
+            text-decoration: none;
+            color: #000000;
+        }
+
+</style>
+<h1>Tecnico Tipo</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Criar Novo</a>
 </p>
 <table class="table">
     <thead>
@@ -25,9 +95,9 @@
                 @Html.DisplayFor(modelItem => item.TecnicoTipoDescricao)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
             </td>
         </tr>
 }
