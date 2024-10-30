@@ -185,7 +185,7 @@ namespace SistemaGHMM.Migrations
                     TecnicosId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TecnicoNome = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    TecnicoDetalhes = table.Column<int>(type: "int", nullable: false),
+                    TecnicoDetalhes = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TecnicoTipo = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

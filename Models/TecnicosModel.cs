@@ -21,7 +21,7 @@ namespace SistemaGHMM.Models
         [Required]
         [Column("TecnicoDetalhes")]
         [Display(Name = "Detalhes Do técnico")]
-        public int TecnicoDatalhes { get; set; }
+        public string TecnicoDatalhes { get; set; } = string.Empty;
 
         [ForeignKey("TecnicoTipo")]
         [Column("TecnicoTipo")]

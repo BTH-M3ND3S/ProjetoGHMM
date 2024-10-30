@@ -25,6 +25,10 @@ namespace SistemaGHMM.Models
         public DbSet<TecnicoTipoModel> TecnicoTipo { get; set; }
         public DbSet<TecnicoUsuarioModel> TecnicoUsuario { get; set; }
 
+        public DbSet<AvisoModel> Aviso { get; set; }
+
+        public DbSet<AvisoTipoModel> AvisoTipo { get; set; }
+
 
 
 

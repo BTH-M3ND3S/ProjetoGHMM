@@ -12,7 +12,7 @@ using SistemaGHMM.Models;
 namespace SistemaGHMM.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20241002144432_Criacao-Inicial")]
+    [Migration("20241030110156_Criacao-Inicial")]
     partial class CriacaoInicial
     {
         /// <inheritdoc />
@@ -351,8 +351,9 @@ namespace SistemaGHMM.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("TecnicoDatalhes")
-                        .HasColumnType("int")
+                    b.Property<string>("TecnicoDatalhes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("TecnicoDetalhes");
 
                     b.Property<string>("TecnicoNome")

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SistemaGHMM.Models.TecnicosModel>
+﻿@model IEnumerable<SistemaGHMM.Models.AvisoTipoModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,13 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TecnicoNome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TecnicoDatalhes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TecnicoTipo)
+                @Html.DisplayNameFor(model => model.AvisoTipoNome)
             </th>
             <th></th>
         </tr>
@@ -28,13 +22,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TecnicoNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TecnicoDatalhes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TecnicoTipo.TecnicoTipoDescricao)
+                @Html.DisplayFor(modelItem => item.AvisoTipoNome)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

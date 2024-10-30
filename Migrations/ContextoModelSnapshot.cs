@@ -348,8 +348,9 @@ namespace SistemaGHMM.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("TecnicoDatalhes")
-                        .HasColumnType("int")
+                    b.Property<string>("TecnicoDatalhes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("TecnicoDetalhes");
 
                     b.Property<string>("TecnicoNome")
