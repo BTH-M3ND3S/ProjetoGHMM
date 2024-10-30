@@ -21,7 +21,7 @@ namespace SistemaGHMM.Controllers
         // GET: Aviso
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.Aviso.Include(a => a.AvisoTipo);
+            var contexto = _context.Aviso.Include(a => a.AvisoTipo).Include(a => a.Usuario);
             return View(await contexto.ToListAsync());
         }
 
@@ -35,6 +35,7 @@ namespace SistemaGHMM.Controllers
 
             var avisoModel = await _context.Aviso
                 .Include(a => a.AvisoTipo)
+                .Include(a => a.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (avisoModel == null)
             {
@@ -48,6 +49,7 @@ namespace SistemaGHMM.Controllers
         public IActionResult Create()
         {
             ViewData["AvisoTipoId"] = new SelectList(_context.AvisoTipo, "Id", "AvisoTipoNome");
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioCpf");
             return View();
         }
 
@@ -56,7 +58,7 @@ namespace SistemaGHMM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AvisoConteudo,AvisoVisto,AvisoTipoId")] AvisoModel avisoModel)
+        public async Task<IActionResult> Create([Bind("Id,AvisoConteudo,AvisoVisto,UsuarioId,AvisoTipoId")] AvisoModel avisoModel)
         {
             if (ModelState.IsValid)
             {
@@ -65,6 +67,7 @@ namespace SistemaGHMM.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["AvisoTipoId"] = new SelectList(_context.AvisoTipo, "Id", "AvisoTipoNome", avisoModel.AvisoTipoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioCpf", avisoModel.UsuarioId);
             return View(avisoModel);
         }
 
@@ -82,6 +85,7 @@ namespace SistemaGHMM.Controllers
                 return NotFound();
             }
             ViewData["AvisoTipoId"] = new SelectList(_context.AvisoTipo, "Id", "AvisoTipoNome", avisoModel.AvisoTipoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioCpf", avisoModel.UsuarioId);
             return View(avisoModel);
         }
 
@@ -90,7 +94,7 @@ namespace SistemaGHMM.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AvisoConteudo,AvisoVisto,AvisoTipoId")] AvisoModel avisoModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AvisoConteudo,AvisoVisto,UsuarioId,AvisoTipoId")] AvisoModel avisoModel)
         {
             if (id != avisoModel.Id)
             {
@@ -118,6 +122,7 @@ namespace SistemaGHMM.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["AvisoTipoId"] = new SelectList(_context.AvisoTipo, "Id", "AvisoTipoNome", avisoModel.AvisoTipoId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioCpf", avisoModel.UsuarioId);
             return View(avisoModel);
         }
 
@@ -131,6 +136,7 @@ namespace SistemaGHMM.Controllers
 
             var avisoModel = await _context.Aviso
                 .Include(a => a.AvisoTipo)
+                .Include(a => a.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (avisoModel == null)
             {

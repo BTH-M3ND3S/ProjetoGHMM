@@ -18,7 +18,14 @@ namespace SistemaGHMM.Models
         [Column("AvisoVisto")]
         [Display(Name = "Status do aviso")]
         [Required]
-        public Boolean AvisoVisto { get; set; } 
+        public Boolean AvisoVisto { get; set; }
+
+
+        [ForeignKey("Usuario")]
+        [Column("Usuario")]
+        [Display(Name = "Usuario destinado")]
+        public int UsuarioId { get; set; }
+        public UsuarioModel? Usuario { get; set; }
 
         [ForeignKey("AvisoTipo")]
         [Column("AvisoTipo")]
