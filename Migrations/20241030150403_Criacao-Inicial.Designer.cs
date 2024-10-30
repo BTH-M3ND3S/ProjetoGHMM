@@ -12,7 +12,7 @@ using SistemaGHMM.Models;
 namespace SistemaGHMM.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20241030110156_Criacao-Inicial")]
+    [Migration("20241030150403_Criacao-Inicial")]
     partial class CriacaoInicial
     {
         /// <inheritdoc />
@@ -24,6 +24,60 @@ namespace SistemaGHMM.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("SistemaGHMM.Models.AvisoModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("AvisoId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AvisoConteudo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("AvisoConteudo");
+
+                    b.Property<int>("AvisoTipoId")
+                        .HasColumnType("int")
+                        .HasColumnName("AvisoTipo");
+
+                    b.Property<bool>("AvisoVisto")
+                        .HasColumnType("bit")
+                        .HasColumnName("AvisoVisto");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int")
+                        .HasColumnName("Usuario");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AvisoTipoId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Aviso");
+                });
+
+            modelBuilder.Entity("SistemaGHMM.Models.AvisoTipoModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("AvisoTipoId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AvisoTipoNome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("AvisoTipoNome");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AvisoTipo");
+                });
 
             modelBuilder.Entity("SistemaGHMM.Models.CargoModel", b =>
                 {
@@ -471,6 +525,25 @@ namespace SistemaGHMM.Migrations
                     b.HasIndex("SetorId");
 
                     b.ToTable("Usuario");
+                });
+
+            modelBuilder.Entity("SistemaGHMM.Models.AvisoModel", b =>
+                {
+                    b.HasOne("SistemaGHMM.Models.AvisoTipoModel", "AvisoTipo")
+                        .WithMany()
+                        .HasForeignKey("AvisoTipoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SistemaGHMM.Models.UsuarioModel", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AvisoTipo");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("SistemaGHMM.Models.ManutencaoEPecasModel", b =>

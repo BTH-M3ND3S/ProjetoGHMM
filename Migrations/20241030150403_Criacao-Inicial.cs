@@ -12,6 +12,19 @@ namespace SistemaGHMM.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AvisoTipo",
+                columns: table => new
+                {
+                    AvisoTipoId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AvisoTipoNome = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AvisoTipo", x => x.AvisoTipoId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Cargo",
                 columns: table => new
                 {
@@ -241,6 +254,34 @@ namespace SistemaGHMM.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Aviso",
+                columns: table => new
+                {
+                    AvisoId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AvisoConteudo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AvisoVisto = table.Column<bool>(type: "bit", nullable: false),
+                    Usuario = table.Column<int>(type: "int", nullable: false),
+                    AvisoTipo = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Aviso", x => x.AvisoId);
+                    table.ForeignKey(
+                        name: "FK_Aviso_AvisoTipo_AvisoTipo",
+                        column: x => x.AvisoTipo,
+                        principalTable: "AvisoTipo",
+                        principalColumn: "AvisoTipoId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Aviso_Usuario_Usuario",
+                        column: x => x.Usuario,
+                        principalTable: "Usuario",
+                        principalColumn: "UsuarioId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Manutencao",
                 columns: table => new
                 {
@@ -322,6 +363,16 @@ namespace SistemaGHMM.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Aviso_AvisoTipo",
+                table: "Aviso",
+                column: "AvisoTipo");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Aviso_Usuario",
+                table: "Aviso",
+                column: "Usuario");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Manutencao_Tecnicos",
                 table: "Manutencao",
                 column: "Tecnicos");
@@ -396,6 +447,9 @@ namespace SistemaGHMM.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Aviso");
+
+            migrationBuilder.DropTable(
                 name: "ManutencaoEPecas");
 
             migrationBuilder.DropTable(
@@ -403,6 +457,9 @@ namespace SistemaGHMM.Migrations
 
             migrationBuilder.DropTable(
                 name: "TecnicoUsuario");
+
+            migrationBuilder.DropTable(
+                name: "AvisoTipo");
 
             migrationBuilder.DropTable(
                 name: "Manutencao");
