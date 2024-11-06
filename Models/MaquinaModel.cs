@@ -38,7 +38,7 @@ namespace SistemaGHMM.Models
         [Required]
         [Column("NumeroSerie")]
         [Display(Name = "Número de Série")]
-        public int MaquinaNumeroSerie { get; set; }
+        public string MaquinaNumeroSerie { get; set; } = string.Empty;
 
         [ForeignKey("Fabricante")]
         [Column("FabricanteId")]
