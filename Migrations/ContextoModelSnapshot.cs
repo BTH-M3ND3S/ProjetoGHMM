@@ -262,8 +262,9 @@ namespace SistemaGHMM.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("Nome");
 
-                    b.Property<int>("MaquinaNumeroSerie")
-                        .HasColumnType("int")
+                    b.Property<string>("MaquinaNumeroSerie")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("NumeroSerie");
 
                     b.Property<float>("MaquinaPeso")

@@ -222,7 +222,7 @@ namespace SistemaGHMM.Migrations
                     TipoMaquinaId = table.Column<int>(type: "int", nullable: false),
                     SetorId = table.Column<int>(type: "int", nullable: false),
                     Modelo = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    NumeroSerie = table.Column<int>(type: "int", nullable: false),
+                    NumeroSerie = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FabricanteId = table.Column<int>(type: "int", nullable: false),
                     DataAquisicao = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FotoUrl = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),

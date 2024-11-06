@@ -12,7 +12,7 @@ using SistemaGHMM.Models;
 namespace SistemaGHMM.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20241030150403_Criacao-Inicial")]
+    [Migration("20241106121337_Criacao-Inicial")]
     partial class CriacaoInicial
     {
         /// <inheritdoc />
@@ -265,8 +265,9 @@ namespace SistemaGHMM.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("Nome");
 
-                    b.Property<int>("MaquinaNumeroSerie")
-                        .HasColumnType("int")
+                    b.Property<string>("MaquinaNumeroSerie")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("NumeroSerie");
 
                     b.Property<float>("MaquinaPeso")
