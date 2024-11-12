@@ -261,21 +261,21 @@ namespace SistemaGHMM.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AvisoConteudo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AvisoVisto = table.Column<bool>(type: "bit", nullable: false),
-                    Usuario = table.Column<int>(type: "int", nullable: false),
-                    AvisoTipo = table.Column<int>(type: "int", nullable: false)
+                    UsuarioId = table.Column<int>(type: "int", nullable: false),
+                    AvisoTipoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Aviso", x => x.AvisoId);
                     table.ForeignKey(
-                        name: "FK_Aviso_AvisoTipo_AvisoTipo",
-                        column: x => x.AvisoTipo,
+                        name: "FK_Aviso_AvisoTipo_AvisoTipoId",
+                        column: x => x.AvisoTipoId,
                         principalTable: "AvisoTipo",
                         principalColumn: "AvisoTipoId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Aviso_Usuario_Usuario",
-                        column: x => x.Usuario,
+                        name: "FK_Aviso_Usuario_UsuarioId",
+                        column: x => x.UsuarioId,
                         principalTable: "Usuario",
                         principalColumn: "UsuarioId",
                         onDelete: ReferentialAction.Cascade);
@@ -363,14 +363,14 @@ namespace SistemaGHMM.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Aviso_AvisoTipo",
+                name: "IX_Aviso_AvisoTipoId",
                 table: "Aviso",
-                column: "AvisoTipo");
+                column: "AvisoTipoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Aviso_Usuario",
+                name: "IX_Aviso_UsuarioId",
                 table: "Aviso",
-                column: "Usuario");
+                column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Manutencao_Tecnicos",

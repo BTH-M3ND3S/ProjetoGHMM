@@ -12,7 +12,7 @@ using SistemaGHMM.Models;
 namespace SistemaGHMM.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20241106121337_Criacao-Inicial")]
+    [Migration("20241112180747_Criacao-Inicial")]
     partial class CriacaoInicial
     {
         /// <inheritdoc />
@@ -40,16 +40,14 @@ namespace SistemaGHMM.Migrations
                         .HasColumnName("AvisoConteudo");
 
                     b.Property<int>("AvisoTipoId")
-                        .HasColumnType("int")
-                        .HasColumnName("AvisoTipo");
+                        .HasColumnType("int");
 
                     b.Property<bool>("AvisoVisto")
                         .HasColumnType("bit")
                         .HasColumnName("AvisoVisto");
 
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("int")
-                        .HasColumnName("Usuario");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

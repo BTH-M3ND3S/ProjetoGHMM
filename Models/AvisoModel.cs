@@ -21,14 +21,12 @@ namespace SistemaGHMM.Models
         public Boolean AvisoVisto { get; set; }
 
 
-        [ForeignKey("Usuario")]
-        [Column("Usuario")]
-        [Display(Name = "Usuario destinado")]
+        [ForeignKey("UsuarioId")]
+        [Display(Name = "Usuario")]
         public int UsuarioId { get; set; }
         public UsuarioModel? Usuario { get; set; }
 
-        [ForeignKey("AvisoTipo")]
-        [Column("AvisoTipo")]
+        [ForeignKey("AvisoTipoId")]
         [Display(Name = "Tipo do Aviso")]
         public int AvisoTipoId { get; set; }
         public AvisoTipoModel? AvisoTipo { get; set; }

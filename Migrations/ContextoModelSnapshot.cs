@@ -37,16 +37,14 @@ namespace SistemaGHMM.Migrations
                         .HasColumnName("AvisoConteudo");
 
                     b.Property<int>("AvisoTipoId")
-                        .HasColumnType("int")
-                        .HasColumnName("AvisoTipo");
+                        .HasColumnType("int");
 
                     b.Property<bool>("AvisoVisto")
                         .HasColumnType("bit")
                         .HasColumnName("AvisoVisto");
 
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("int")
-                        .HasColumnName("Usuario");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

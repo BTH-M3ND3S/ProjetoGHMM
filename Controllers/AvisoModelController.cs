@@ -9,23 +9,23 @@ using SistemaGHMM.Models;
 
 namespace SistemaGHMM.Controllers
 {
-    public class AvisoController : Controller
+    public class AvisoModelController : Controller
     {
         private readonly Contexto _context;
 
-        public AvisoController(Contexto context)
+        public AvisoModelController(Contexto context)
         {
             _context = context;
         }
 
-        // GET: Aviso
+        // GET: AvisoModel
         public async Task<IActionResult> Index()
         {
             var contexto = _context.Aviso.Include(a => a.AvisoTipo).Include(a => a.Usuario);
             return View(await contexto.ToListAsync());
         }
 
-        // GET: Aviso/Details/5
+        // GET: AvisoModel/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Aviso == null)
@@ -45,7 +45,7 @@ namespace SistemaGHMM.Controllers
             return View(avisoModel);
         }
 
-        // GET: Aviso/Create
+        // GET: AvisoModel/Create
         public IActionResult Create()
         {
             ViewData["AvisoTipoId"] = new SelectList(_context.AvisoTipo, "Id", "AvisoTipoNome");
@@ -53,7 +53,7 @@ namespace SistemaGHMM.Controllers
             return View();
         }
 
-        // POST: Aviso/Create
+        // POST: AvisoModel/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -71,7 +71,7 @@ namespace SistemaGHMM.Controllers
             return View(avisoModel);
         }
 
-        // GET: Aviso/Edit/5
+        // GET: AvisoModel/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Aviso == null)
@@ -89,7 +89,7 @@ namespace SistemaGHMM.Controllers
             return View(avisoModel);
         }
 
-        // POST: Aviso/Edit/5
+        // POST: AvisoModel/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -126,7 +126,7 @@ namespace SistemaGHMM.Controllers
             return View(avisoModel);
         }
 
-        // GET: Aviso/Delete/5
+        // GET: AvisoModel/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Aviso == null)
@@ -146,7 +146,7 @@ namespace SistemaGHMM.Controllers
             return View(avisoModel);
         }
 
-        // POST: Aviso/Delete/5
+        // POST: AvisoModel/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
