@@ -11,7 +11,7 @@ namespace SistemaGHMM.Models
         public int Id { get; set; }
 
         [Column("AvisoConteudo")]
-        [Display(Name = "Cargo do Funcionário")]
+        [Display(Name = "Conteudo do Aviso")]
         [Required]
         public string AvisoConteudo { get; set; } = string.Empty;
 

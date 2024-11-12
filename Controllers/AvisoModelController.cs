@@ -48,8 +48,8 @@ namespace SistemaGHMM.Controllers
         // GET: AvisoModel/Create
         public IActionResult Create()
         {
-            ViewData["AvisoTipoId"] = new SelectList(_context.AvisoTipo, "Id", "AvisoTipoNome");
-            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioCpf");
+            ViewData["AvisoTipoId"] = new SelectList(_context.AvisoTipo?.ToList() ?? new List<AvisoTipoModel>(), "Id", "AvisoTipoNome");
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario?.ToList() ?? new List<UsuarioModel>(), "Id", "UsuarioNome");
             return View();
         }
 
@@ -67,7 +67,7 @@ namespace SistemaGHMM.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["AvisoTipoId"] = new SelectList(_context.AvisoTipo, "Id", "AvisoTipoNome", avisoModel.AvisoTipoId);
-            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioCpf", avisoModel.UsuarioId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioNome", avisoModel.UsuarioId);
             return View(avisoModel);
         }
 
@@ -85,7 +85,7 @@ namespace SistemaGHMM.Controllers
                 return NotFound();
             }
             ViewData["AvisoTipoId"] = new SelectList(_context.AvisoTipo, "Id", "AvisoTipoNome", avisoModel.AvisoTipoId);
-            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioCpf", avisoModel.UsuarioId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioNome", avisoModel.UsuarioId);
             return View(avisoModel);
         }
 
@@ -122,7 +122,7 @@ namespace SistemaGHMM.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["AvisoTipoId"] = new SelectList(_context.AvisoTipo, "Id", "AvisoTipoNome", avisoModel.AvisoTipoId);
-            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioCpf", avisoModel.UsuarioId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioNome", avisoModel.UsuarioId);
             return View(avisoModel);
         }
 
