@@ -9,16 +9,16 @@ using SistemaGHMM.Models;
 
 namespace SistemaGHMM.Controllers
 {
-    public class CategoriaPecaController : Controller
+    public class CategoriaPecaModelController : Controller
     {
         private readonly Contexto _context;
 
-        public CategoriaPecaController(Contexto context)
+        public CategoriaPecaModelController(Contexto context)
         {
             _context = context;
         }
 
-        // GET: CategoriaPeca
+        // GET: CategoriaPecaModel
         public async Task<IActionResult> Index()
         {
               return _context.CateogriaPeca != null ? 
@@ -26,7 +26,7 @@ namespace SistemaGHMM.Controllers
                           Problem("Entity set 'Contexto.CateogriaPeca'  is null.");
         }
 
-        // GET: CategoriaPeca/Details/5
+        // GET: CategoriaPecaModel/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.CateogriaPeca == null)
@@ -44,18 +44,18 @@ namespace SistemaGHMM.Controllers
             return View(categoriaPecaModel);
         }
 
-        // GET: CategoriaPeca/Create
+        // GET: CategoriaPecaModel/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: CategoriaPeca/Create
+        // POST: CategoriaPecaModel/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CategoriaPecaNome")] CategoriaPecaModel categoriaPecaModel)
+        public async Task<IActionResult> Create([Bind("Id,CategoriaPecaNome,FotoUrl")] CategoriaPecaModel categoriaPecaModel)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace SistemaGHMM.Controllers
             return View(categoriaPecaModel);
         }
 
-        // GET: CategoriaPeca/Edit/5
+        // GET: CategoriaPecaModel/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.CateogriaPeca == null)
@@ -82,12 +82,12 @@ namespace SistemaGHMM.Controllers
             return View(categoriaPecaModel);
         }
 
-        // POST: CategoriaPeca/Edit/5
+        // POST: CategoriaPecaModel/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CategoriaPecaNome")] CategoriaPecaModel categoriaPecaModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CategoriaPecaNome,FotoUrl")] CategoriaPecaModel categoriaPecaModel)
         {
             if (id != categoriaPecaModel.Id)
             {
@@ -117,7 +117,7 @@ namespace SistemaGHMM.Controllers
             return View(categoriaPecaModel);
         }
 
-        // GET: CategoriaPeca/Delete/5
+        // GET: CategoriaPecaModel/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.CateogriaPeca == null)
@@ -135,7 +135,7 @@ namespace SistemaGHMM.Controllers
             return View(categoriaPecaModel);
         }
 
-        // POST: CategoriaPeca/Delete/5
+        // POST: CategoriaPecaModel/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

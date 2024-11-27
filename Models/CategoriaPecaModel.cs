@@ -16,5 +16,9 @@ namespace SistemaGHMM.Models
         [Required]
         public string CategoriaPecaNome { get; set; } = string.Empty;
 
+        [Column("FotoUrl")]
+        [Display(Name = "URL da Foto")]
+        public string? FotoUrl { get; set; }
+
     }
 }

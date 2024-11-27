@@ -43,7 +43,8 @@ namespace SistemaGHMM.Migrations
                 {
                     CategoriaPecaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoriaPecaNome = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CategoriaPecaNome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FotoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

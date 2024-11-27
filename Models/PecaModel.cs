@@ -21,13 +21,13 @@ namespace SistemaGHMM.Models
         public int QuantidadeEstoque { get; set; }
 
         [ForeignKey("Fornecedor")]
-        [Column("Fornecedor")]
+        [Column("FornecedorId")]
         [Display(Name = "Fornecedor")]
         public int FornecedorId { get; set; }
         public FornecedorModel? Fornecedor { get; set; }
 
         [ForeignKey("CategoriaPeca")]
-        [Column("CategoriaPeca")]
+        [Column("CategoriaPecaId")]
         [Display(Name = "Categoria da Peca")]
         public int CategoriaPecaId { get; set; }
         public CategoriaPecaModel? CategoriaPeca { get; set; }

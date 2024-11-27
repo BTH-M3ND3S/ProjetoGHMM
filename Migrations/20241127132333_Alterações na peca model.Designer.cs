@@ -12,8 +12,8 @@ using SistemaGHMM.Models;
 namespace SistemaGHMM.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20241112180747_Criacao-Inicial")]
-    partial class CriacaoInicial
+    [Migration("20241127132333_Alterações na peca model")]
+    partial class Alteraçõesnapecamodel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -109,6 +109,10 @@ namespace SistemaGHMM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("CategoriaPecaNome");
+
+                    b.Property<string>("FotoUrl")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("FotoUrl");
 
                     b.HasKey("Id");
 
@@ -306,11 +310,11 @@ namespace SistemaGHMM.Migrations
 
                     b.Property<int>("CategoriaPecaId")
                         .HasColumnType("int")
-                        .HasColumnName("CategoriaPeca");
+                        .HasColumnName("CategoriaPecaId");
 
                     b.Property<int>("FornecedorId")
                         .HasColumnType("int")
-                        .HasColumnName("Fornecedor");
+                        .HasColumnName("FornecedorId");
 
                     b.Property<string>("PecaNome")
                         .IsRequired()
